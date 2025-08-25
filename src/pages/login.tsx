@@ -3,6 +3,7 @@ import { App, Button, Form, Input } from "antd";
 import axios from "axios";
 import { loginApi } from "../services/api";
 import { useNavigate } from "react-router";
+import { useAppContext } from "../context/app.provider";
 
 type FieldType = {
   username?: string;
@@ -11,7 +12,9 @@ type FieldType = {
 
 const LoginPage = () => {
   const { notification } = App.useApp();
+  const { setUsername } = useAppContext();
   const navigate = useNavigate();
+
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     const { username, password } = values;
     try {
@@ -20,10 +23,12 @@ const LoginPage = () => {
       if (res?.data?.data) {
         const access_token = res.data.data.access_token;
         localStorage.setItem("access_token", access_token);
+        setUsername(username!);
         navigate("/");
       }
     } catch (error: any) {
       const message = error.response.data.message ?? "unknown";
+
       notification.error({ message: "Có lỗi xảy ra", description: message });
       console.log(error.response.data);
     }

@@ -1,9 +1,5 @@
-import React, { useState } from "react";
-import {
-  AppstoreOutlined,
-  HomeOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { useState } from "react";
+import { HomeOutlined, UserOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
 import { Link } from "react-router";

@@ -6,6 +6,8 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import UserPage from "./pages/user.tsx";
 import HomePage from "./pages/home.tsx";
+import LoginPage from "./pages/login.tsx";
+import { App } from "antd";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,14 @@ const router = createBrowserRouter([
         element: <UserPage />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: (
+      <App>
+        <LoginPage />
+      </App>
+    ),
   },
 ]);
 

@@ -2,6 +2,7 @@ import type { FormProps } from "antd";
 import { App, Button, Form, Input } from "antd";
 import axios from "axios";
 import { loginApi } from "../services/api";
+import { useNavigate } from "react-router";
 
 type FieldType = {
   username?: string;
@@ -10,6 +11,7 @@ type FieldType = {
 
 const LoginPage = () => {
   const { notification } = App.useApp();
+  const navigate = useNavigate();
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     const { username, password } = values;
     try {
@@ -17,7 +19,8 @@ const LoginPage = () => {
 
       if (res?.data?.data) {
         const access_token = res.data.data.access_token;
-        console.log(access_token);
+        localStorage.setItem("access_token", access_token);
+        navigate("/");
       }
     } catch (error: any) {
       const message = error.response.data.message ?? "unknown";

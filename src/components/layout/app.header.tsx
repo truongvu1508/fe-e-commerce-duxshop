@@ -8,13 +8,15 @@ import {
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useAppContext } from "../../context/app.provider";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
 const AppHeader = () => {
   const { userInfo, setUserInfo } = useAppContext();
+  const navigate = useNavigate();
+
   let items: MenuItem[];
   if (userInfo.isAuthenticated) {
     items = [
@@ -48,6 +50,7 @@ const AppHeader = () => {
                 isAuthenticated: false,
                 isLoading: true,
               });
+              navigate("/");
             },
           },
         ],

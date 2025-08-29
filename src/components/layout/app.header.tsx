@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
   HomeOutlined,
   LoginOutlined,
+  LogoutOutlined,
   SettingOutlined,
   UserOutlined,
 } from "@ant-design/icons";
@@ -13,7 +14,7 @@ import { useAppContext } from "../../context/app.provider";
 type MenuItem = Required<MenuProps>["items"][number];
 
 const AppHeader = () => {
-  const { userInfo } = useAppContext();
+  const { userInfo, setUserInfo } = useAppContext();
   let items: MenuItem[];
   if (userInfo.isAuthenticated) {
     items = [
@@ -31,7 +32,26 @@ const AppHeader = () => {
         label: `Welcome ${userInfo.username}`,
         key: "SubMenu",
         icon: <SettingOutlined />,
-        children: [{ label: "Logout", key: "logout" }],
+        children: [
+          {
+            label: (
+              <span
+                onClick={() => {
+                  localStorage.removeItem("access_token");
+                  setUserInfo({
+                    id: 0,
+                    username: "",
+                    isAuthenticated: false,
+                    isLoading: true,
+                  });
+                }}
+              >
+                <LogoutOutlined /> Logout
+              </span>
+            ),
+            key: "logout",
+          },
+        ],
       },
     ];
   } else {

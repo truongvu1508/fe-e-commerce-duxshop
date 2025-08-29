@@ -7,6 +7,7 @@ interface IAppData {
 
   userInfo: {
     isAuthenticated: boolean;
+    isLoading: boolean;
     id: number;
     username: string;
   };
@@ -36,9 +37,10 @@ const AppProvider = (props: IProps) => {
   const [username, setUsername] = useState<string>("");
   const [userInfo, setUserInfo] = useState<{
     isAuthenticated: boolean;
+    isLoading: boolean;
     id: number;
     username: string;
-  }>({ isAuthenticated: false, id: 0, username: "" });
+  }>({ isAuthenticated: false, isLoading: false, id: 0, username: "" });
   const { children } = props;
 
   return (

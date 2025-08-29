@@ -1,6 +1,5 @@
 import type { FormProps } from "antd";
 import { App, Button, Form, Input } from "antd";
-import axios from "axios";
 import { loginApi } from "../services/api";
 import { useNavigate } from "react-router";
 import { useAppContext } from "../context/app.provider";

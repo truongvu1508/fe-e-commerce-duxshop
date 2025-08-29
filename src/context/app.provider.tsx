@@ -2,9 +2,6 @@ import type React from "react";
 import { createContext, useContext, useState } from "react";
 
 interface IAppData {
-  theme: string;
-  setTheme: (v: string) => void;
-
   userInfo: {
     isAuthenticated: boolean;
     isLoading: boolean;
@@ -33,7 +30,6 @@ interface IProps {
 }
 
 const AppProvider = (props: IProps) => {
-  const [theme, setTheme] = useState<string>("light");
   const [username, setUsername] = useState<string>("");
   const [userInfo, setUserInfo] = useState<{
     isAuthenticated: boolean;
@@ -45,7 +41,7 @@ const AppProvider = (props: IProps) => {
 
   return (
     <AppContext.Provider
-      value={{ theme, setTheme, userInfo, setUserInfo, username, setUsername }}
+      value={{ userInfo, setUserInfo, username, setUsername }}
     >
       {children}
     </AppContext.Provider>

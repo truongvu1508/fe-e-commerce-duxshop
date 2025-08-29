@@ -4,6 +4,7 @@ import { Outlet } from "react-router";
 import { getAccountApi } from "./services/api";
 import { useAppContext } from "./context/app.provider";
 import { Spin } from "antd";
+import AppFooter from "./components/layout/app.footer";
 
 const AppLayout = () => {
   const { userInfo, setUserInfo } = useAppContext();
@@ -44,6 +45,7 @@ const AppLayout = () => {
           <div className="app-content">
             <Outlet />
           </div>
+          <AppFooter />
         </>
       ) : (
         <div className="popup">

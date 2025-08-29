@@ -42,7 +42,7 @@ const LoginPage = () => {
   return (
     <div style={{ width: 600, margin: "auto", padding: 50 }}>
       <Form
-        name="basic"
+        name="login"
         initialValues={{ remember: true }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}

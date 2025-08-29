@@ -35,21 +35,20 @@ const AppHeader = () => {
         children: [
           {
             label: (
-              <span
-                onClick={() => {
-                  localStorage.removeItem("access_token");
-                  setUserInfo({
-                    id: 0,
-                    username: "",
-                    isAuthenticated: false,
-                    isLoading: true,
-                  });
-                }}
-              >
+              <span>
                 <LogoutOutlined /> Logout
               </span>
             ),
             key: "logout",
+            onClick: () => {
+              localStorage.removeItem("access_token");
+              setUserInfo({
+                id: 0,
+                username: "",
+                isAuthenticated: false,
+                isLoading: true,
+              });
+            },
           },
         ],
       },

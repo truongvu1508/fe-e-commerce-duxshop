@@ -13,9 +13,6 @@ import {
   UserOutlined,
   LockOutlined,
   ShoppingCartOutlined,
-  TrophyOutlined,
-  SafetyOutlined,
-  ThunderboltOutlined,
   EyeInvisibleOutlined,
   EyeTwoTone,
 } from "@ant-design/icons";
@@ -70,24 +67,6 @@ const LoginPage = () => {
   ) => {
     console.log("Failed:", errorInfo);
   };
-
-  const features = [
-    {
-      icon: <TrophyOutlined style={{ fontSize: 28, color: "#1890ff" }} />,
-      title: "Thương hiệu uy tín",
-      description: "Hơn 50,000+ khách hàng tin tưởng",
-    },
-    {
-      icon: <SafetyOutlined style={{ fontSize: 28, color: "#1890ff" }} />,
-      title: "Bảo hành chính hãng",
-      description: "Cam kết 100% sản phẩm chính hãng",
-    },
-    {
-      icon: <ThunderboltOutlined style={{ fontSize: 28, color: "#1890ff" }} />,
-      title: "Giao hàng nhanh",
-      description: "Miễn phí ship toàn quốc trong 24h",
-    },
-  ];
 
   return (
     <div
